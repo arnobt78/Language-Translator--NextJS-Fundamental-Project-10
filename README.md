@@ -1,34 +1,25 @@
-# Language Text Translator - ReactVite Web Application
+# Language Translator - Next.js, React, TypeScript, TailwindCSS, Framer Motion Fundamental Project 10
 
-![Screenshot 2024-09-27 at 17 44 15](https://github.com/user-attachments/assets/3a0e60ff-62d8-4e75-b8f4-8ed2ea6e365a) ![Screenshot 2024-09-27 at 17 46 41](https://github.com/user-attachments/assets/66f748ba-256c-4f95-8c4e-c0c1d4665859)
+A modern, user-friendly language translator web application built with React and Vite. It leverages the MyMemory translation API and offers a seamless interface for translating text between various languages. Styled with TailwindCSS and optimized for performance, this app is a great example of how to build a fast, interactive, and visually appealing SPA (Single Page Application) with deployment-ready features.
 
----
-
-## Project Summary
-
-**Translator-ReactVite-Webpage** is a modern, user-friendly language translator web application built with React and Vite. It leverages the MyMemory translation API and offers a seamless interface for translating text between various languages. Styled with TailwindCSS and optimized for performance, this app is a great example of how to build a fast, interactive, and visually appealing SPA (Single Page Application) with deployment-ready features.
-
-The project is fully open source and designed for both practical usage and educational purposes. It’s a great resource for anyone learning React, Vite, or looking for a real-world API integration example.
-
-- **Live-Demo:** [https://translator-arnob.vercel.app/](https://translator-arnob.vercel.app/)
+- **Live-Demo:** [https://langs-translator.vercel.app/](https://langs-translator.vercel.app/)
 
 ---
 
 ## Table of Contents
 
 1. [Project Overview](#project-overview)
-2. [Demo](#demo)
-3. [Features](#features)
-4. [Technology Stack](#technology-stack)
-5. [Project Structure](#project-structure)
-6. [Installation & Setup](#installation--setup)
-7. [API Integration](#api-integration)
-8. [Usage Instructions](#usage-instructions)
-9. [Component Walkthrough](#component-walkthrough)
-10. [Example Code Snippets](#example-code-snippets)
-11. [Learning & Teaching Notes](#learning--teaching-notes)
-12. [Keywords](#keywords)
-13. [Conclusion](#conclusion)
+2. [Features](#features)
+3. [Technology Stack](#technology-stack)
+4. [Project Structure](#project-structure)
+5. [Installation & Setup](#installation--setup)
+6. [API Integration](#api-integration)
+7. [Usage Instructions](#usage-instructions)
+8. [Component Walkthrough](#component-walkthrough)
+9. [Example Code Snippets](#example-code-snippets)
+10. [Learning & Teaching Notes](#learning--teaching-notes)
+11. [Keywords](#keywords)
+12. [Conclusion](#conclusion)
 
 ---
 
@@ -84,12 +75,14 @@ Here’s a typical structure for a React + Vite + TailwindCSS project. Your proj
 ## Installation & Setup
 
 1. **Clone the repository:**
+
    ```bash
    git clone https://github.com/arnobt78/Language-Translator--ReactVite.git
    cd Language-Translator--ReactVite
    ```
 
 2. **Install dependencies:**
+
    ```bash
    npm install
    ```
@@ -98,6 +91,7 @@ Here’s a typical structure for a React + Vite + TailwindCSS project. Your proj
    - Download/install from [Node.js official website](https://nodejs.org/en/)
 
 4. **Start the development server:**
+
    ```bash
    npm run dev
    ```
@@ -111,7 +105,7 @@ Here’s a typical structure for a React + Vite + TailwindCSS project. Your proj
 
 This app uses the [MyMemory Translation API](https://mymemory.translated.net/doc/spec.php) to perform translations. The API is called with the user’s input text, source, and target language codes. It returns the translated text in real time.
 
-*No API key required for free usage, but check the [docs](https://mymemory.translated.net/doc/spec.php) for limitations and rate limits.*
+_No API key required for free usage, but check the [docs](https://mymemory.translated.net/doc/spec.php) for limitations and rate limits._
 
 ---
 
@@ -128,12 +122,14 @@ This app uses the [MyMemory Translation API](https://mymemory.translated.net/doc
 ## Component Walkthrough
 
 **Main Components:**
+
 - `App.jsx`: Main container, manages state and layout.
 - `LanguageSelector.jsx`: Dropdown for language selection.
 - `TranslatorForm.jsx`: Handles user input and submit actions.
 - `TranslationResult.jsx`: Displays the translated output.
 
 **Example (pseudo-code):**
+
 ```jsx
 // App.jsx (simplified)
 import LanguageSelector from './components/LanguageSelector';
@@ -156,6 +152,7 @@ function App() {
 ## Example Code Snippets
 
 **Fetching translation from MyMemory:**
+
 ```js
 const fetchTranslation = async (text, sourceLang, targetLang) => {
   const url = `https://api.mymemory.translated.net/get?q=${encodeURIComponent(text)}&langpair=${sourceLang}|${targetLang}`;
@@ -166,11 +163,20 @@ const fetchTranslation = async (text, sourceLang, targetLang) => {
 ```
 
 **TailwindCSS Usage Example:**
+(url);
+const data = await response.json();
+return data.responseData.translatedText;
+};
+
+````
+
+**TailwindCSS Usage Example:**
+
 ```jsx
 <button className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">
   Translate
 </button>
-```
+````
 
 ---
 
