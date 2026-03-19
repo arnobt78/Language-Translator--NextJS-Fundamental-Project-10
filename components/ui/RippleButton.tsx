@@ -3,6 +3,7 @@
 import { useCallback, useState } from "react";
 import { cn } from "@/lib/utils";
 
+/** Single ripple: position (relative to button) and id for list key and removal */
 interface Ripple {
   id: number;
   x: number;
@@ -17,6 +18,10 @@ interface RippleButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement
 /**
  * Button that shows a ripple effect on click (per RIPPLE_BUTTON_EFFECT.md).
  * Ripple is purely visual; button semantics and accessibility unchanged.
+ *
+ * WALKTHROUGH: On click we record click position in button coordinates, add a ripple
+ * to state (rendered as .ripple-wave in globals.css), remove it after 750ms, then call
+ * the passed onClick. Use like <RippleButton onClick={...}>Label</RippleButton>.
  */
 export function RippleButton({
   children,
@@ -36,7 +41,7 @@ export function RippleButton({
       setRipples((prev) => [...prev, { id, x, y }]);
       setTimeout(() => {
         setRipples((prev) => prev.filter((r) => r.id !== id));
-      }, 600);
+      }, 750);
       onClick?.(e);
     },
     [onClick]
@@ -49,19 +54,16 @@ export function RippleButton({
       onClick={handleClick}
       {...rest}
     >
-      {children}
+      <span className="relative z-10">{children}</span>
       {ripples.map(({ id, x, y }) => (
         <span
           key={id}
-          className="absolute rounded-full bg-white/30 pointer-events-none animate-ripple"
+          className="ripple-wave"
           style={{
             left: x,
             top: y,
-            width: 8,
-            height: 8,
-            marginLeft: -4,
-            marginTop: -4,
           }}
+          aria-hidden
         />
       ))}
     </button>

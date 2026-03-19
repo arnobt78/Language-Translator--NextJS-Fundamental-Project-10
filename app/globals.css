@@ -1,16 +1,20 @@
-@import "tw-animate-css";
-@import "shadcn/tailwind.css";
+/* Tailwind layers: base = reset + CSS vars, components = reusable classes, utilities = one-off */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+/* Base: global reset, focus ring, and theme CSS variables (light/dark) */
 @layer base {
   * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     outline: none;
-    @apply border-border outline-ring/50;
+    border-color: var(--border);
+  }
+  *:focus-visible {
+    outline: 2px solid var(--ring);
+    outline-offset: 2px;
   }
   :root {
     --background: oklch(1 0 0);
@@ -88,4 +92,89 @@
   html {
     @apply font-sans;
   }
+}
+
+/* Ripple: water-on-stone drop spreading (per RIPPLE_BUTTON_EFFECT.md) */
+@keyframes ripple-wave-spread {
+  0% {
+    transform: scale(0);
+    opacity: 0.9;
+  }
+  100% {
+    transform: scale(28);
+    opacity: 0;
+  }
+}
+
+/* Ripple circle: centered on click, scales out and fades; used by RippleButton */
+.ripple-wave {
+  position: absolute;
+  z-index: 10;
+  width: 20px;
+  height: 20px;
+  margin-left: -10px;
+  margin-top: -10px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.9);
+  pointer-events: none;
+  transform-origin: center;
+  animation: ripple-wave-spread 0.7s ease-out forwards;
+}
+
+/* CTA button: slow, smooth splashy shine sweep */
+@keyframes cta-shine {
+  0% {
+    transform: translateX(-100%) skewX(-8deg);
+  }
+  100% {
+    transform: translateX(200%) skewX(-8deg);
+  }
+}
+
+/* Wrapper for CTA buttons: contains the shine overlay so it clips to button shape */
+.cta-shine-wrap {
+  position: relative;
+  display: inline-block;
+  overflow: hidden;
+  border-radius: 9999px;
+}
+
+.cta-shine-wrap::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.05) 8%,
+    rgba(255, 255, 255, 0.12) 18%,
+    rgba(255, 255, 255, 0.22) 28%,
+    rgba(255, 255, 255, 0.35) 38%,
+    rgba(255, 255, 255, 0.4) 50%,
+    rgba(255, 255, 255, 0.35) 62%,
+    rgba(255, 255, 255, 0.22) 72%,
+    rgba(255, 255, 255, 0.12) 82%,
+    rgba(255, 255, 255, 0.05) 92%,
+    transparent 100%
+  );
+  width: 85%;
+  animation: cta-shine 4.5s cubic-bezier(0.35, 0, 0.15, 1) infinite;
+  pointer-events: none;
+}
+
+.cta-shine-wrap .cta-shine-button {
+  position: relative;
+  z-index: 1;
+}
+
+/* Streaming cursor blink (ChatGPT-style) */
+@keyframes caret-blink {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0; }
+}
+
+/* Blinking cursor shown while translation is “streaming” in (TranslatorApp output) */
+.stream-cursor {
+  animation: caret-blink 1s step-end infinite;
 }

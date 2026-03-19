@@ -1,6 +1,7 @@
 /**
- * Supported languages for translation (MyMemory API codes).
- * "en" added so default UI selection matches the data.
+ * Supported languages for translation. Keys are locale-style codes (e.g. de-DE, ja-JP);
+ * lib/api.ts toApiLangCode() maps these to MyMemory format (e.g. de, ja).
+ * "en" is included so the default "From" selection exists in the map.
  */
 export const languages = {
   "en": "English",

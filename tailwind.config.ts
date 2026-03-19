@@ -12,6 +12,19 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      colors: {
+        border: "var(--border)",
+        input: "var(--input)",
+        ring: "var(--ring)",
+        background: "var(--background)",
+        foreground: "var(--foreground)",
+        primary: { DEFAULT: "var(--primary)", foreground: "var(--primary-foreground)" },
+        secondary: { DEFAULT: "var(--secondary)", foreground: "var(--secondary-foreground)" },
+        destructive: "var(--destructive)",
+        muted: { DEFAULT: "var(--muted)", foreground: "var(--muted-foreground)" },
+        accent: { DEFAULT: "var(--accent)", foreground: "var(--accent-foreground)" },
+        card: { DEFAULT: "var(--card)", foreground: "var(--card-foreground)" },
+      },
       maxWidth: {
         "9xl": "96rem",
       },
@@ -23,12 +36,12 @@ const config: Config = {
       },
       keyframes: {
         ripple: {
-          "0%": { transform: "scale(0)", opacity: "0.3" },
-          "100%": { transform: "scale(20)", opacity: "0" },
+          "0%": { transform: "scale(0)", opacity: "0.8" },
+          "100%": { transform: "scale(25)", opacity: "0" },
         },
       },
       animation: {
-        ripple: "ripple 0.6s ease-out forwards",
+        ripple: "ripple 0.75s ease-out forwards",
       },
     },
   },

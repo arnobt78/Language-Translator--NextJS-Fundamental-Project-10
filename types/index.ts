@@ -1,9 +1,11 @@
 import type { languages } from "@/data/languages";
 
-/** Language code keys from the supported languages map */
+/** Shared types for the translator app (no `any`). */
+
+/** Language code keys from the supported languages map (e.g. "en", "de-DE", "ja-JP") */
 export type LanguageCode = keyof typeof languages;
 
-/** MyMemory API response shape for get request */
+/** MyMemory API response shape for GET .../get?q=...&langpair=... */
 export interface MyMemoryTranslationResponse {
   responseData: {
     translatedText: string;
@@ -22,15 +24,15 @@ export interface MyMemoryTranslationResponse {
   }>;
 }
 
-/** Props for the start screen */
+/** Props for the start screen: onStart is called when user clicks "Let's Get Started!" */
 export interface TranslatorStartProps {
   onStart: () => void;
 }
 
-/** Props for the translator app (main translation UI) */
+/** Props for the translator app: onClose is called when user clicks the X (back to start) */
 export interface TranslatorAppProps {
   onClose: () => void;
 }
 
-/** Current language selector target: "from" or "to" */
+/** Which language slot the dropdown is changing: "from" (source) or "to" (target) */
 export type LanguageSelectionType = "from" | "to";
