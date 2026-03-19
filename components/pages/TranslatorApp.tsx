@@ -325,7 +325,7 @@ export default function TranslatorApp({ onClose }: TranslatorAppProps) {
                         className="bg-white/10 border-white/20 text-white placeholder:text-white/50 [&::placeholder]:!text-white/50"
                       />
                     </div>
-                    <ul className="overflow-y-auto flex-1 min-h-0 text-white [&>*]:!text-white">
+                    <ul className="dropdown-scroll overflow-y-auto flex-1 min-h-0 text-white [&>*]:!text-white">
                       {filteredLanguages.map(([code, name], index) => (
                         <motion.li
                           key={code}
@@ -417,7 +417,7 @@ export default function TranslatorApp({ onClose }: TranslatorAppProps) {
                         className="bg-white/10 border-white/20 text-white placeholder:text-white/50 [&::placeholder]:!text-white/50"
                       />
                     </div>
-                    <ul className="overflow-y-auto flex-1 min-h-0 text-white [&>*]:!text-white">
+                    <ul className="dropdown-scroll overflow-y-auto flex-1 min-h-0 text-white [&>*]:!text-white">
                       {filteredLanguages.map(([code, name], index) => (
                         <motion.li
                           key={code}
