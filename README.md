@@ -12,7 +12,8 @@ A modern, user-friendly language translator web application built with **Next.js
 
 - **Live Demo:** [https://langs-translator.vercel.app/](https://langs-translator.vercel.app/)
 
----
+![Image 1](https://github.com/user-attachments/assets/564bc919-91db-4ef9-9de7-f6056f68487f)
+![Image 2](https://github.com/user-attachments/assets/998ecad9-8e72-44db-8afd-c3f5570cd240)
 
 ## Table of Contents
 
